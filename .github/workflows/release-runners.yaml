@@ -63,8 +63,6 @@ jobs:
       - name: Setup Docker Environment
         uses: ./.github/actions/setup-docker-environment
         with:
-          username: ${{ env.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
           ghcr_username: ${{ github.actor }}
           ghcr_password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -82,7 +80,6 @@ jobs:
       - name: Export env vars
         run: |
             echo "SHA_SHORT=$(git -C $GITHUB_WORKSPACE/arc rev-parse --short HEAD)" >> $GITHUB_ENV
-            echo "LATEST_TAG_DOCKER=${{ env.DOCKERHUB_USERNAME }}/${{ matrix.name }}:latest" >> $GITHUB_ENV
             echo "LATEST_TAG_GHCR=ghcr.io/${{ env.TARGET_ORG }}/${{ env.TARGET_REPO }}/${{ matrix.name }}:latest" >> $GITHUB_ENV
 
       - name: Build and Push Versioned Tags
