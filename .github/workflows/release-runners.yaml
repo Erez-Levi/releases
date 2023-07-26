@@ -34,7 +34,7 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   TARGET_ORG: ${{ github.repository_owner }}
-  TARGET_REPO: release-runners
+  TARGET_REPO: releases
 
 concurrency:
   group: ${{ github.workflow }}
