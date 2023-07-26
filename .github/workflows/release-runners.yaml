@@ -79,8 +79,6 @@ jobs:
         run: find . -name '*.dockerfile' -exec sed -i 's/FROM ubuntu\:/FROM nvidia\/cuda\:11\.8\.0-runtime-ubuntu22.04/g' '{}' \;
         working-directory: arc/
 
-      - name: Export env var
-
       - name: Export env vars
         run: |
             echo "SHA_SHORT=$(git -C $GITHUB_WORKSPACE/arc rev-parse --short HEAD)" >> $GITHUB_ENV
